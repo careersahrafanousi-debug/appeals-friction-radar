@@ -1,0 +1,58 @@
+table priority
+
+	column Priority
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Priority
+
+	column appeals
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: appeals
+
+	column target_days
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: target_days
+
+	column avg_tat
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: avg_tat
+
+	column sla_pct
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: sla_pct
+
+	measure 'Avg turnaround (days) (priority)' = AVERAGE ( 'priority'[avg_tat] )
+		formatString: #,0.00
+		displayFolder: Measures
+		/// Avg turnaround (days) for the 'Urgent triage is not actually urgent' visual.
+
+	measure 'SLA target (days) (priority)' = SUM ( 'priority'[target_days] )
+		formatString: #,0.00
+		displayFolder: Measures
+		/// SLA target (days) for the 'Urgent triage is not actually urgent' visual.
+
+	measure 'SLA compliance % (priority)' = AVERAGE ( 'priority'[sla_pct] )
+		formatString: #,0.00
+		displayFolder: Measures
+		/// SLA compliance % for the 'Urgent triage is not actually urgent' visual.
+
+	partition priority = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(ExtractFolder & "\priority.csv"),
+				        [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {
+				        {"Priority", type text},
+				        {"appeals", Int64.Type},
+				        {"target_days", Int64.Type},
+				        {"avg_tat", type number},
+				        {"sla_pct", type number}
+				    })
+				in
+				    Typed

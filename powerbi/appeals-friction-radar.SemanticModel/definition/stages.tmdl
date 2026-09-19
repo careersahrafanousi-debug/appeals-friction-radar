@@ -1,0 +1,41 @@
+table stages
+
+	column stage
+		dataType: string
+		summarizeBy: none
+		sourceColumn: stage
+
+	column avg_days
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: avg_days
+
+	column pct_of_tat
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: pct_of_tat
+
+	measure 'Average days in stage (stages)' = SUM ( 'stages'[avg_days] )
+		formatString: #,0.00
+		displayFolder: Measures
+		/// Average days in stage for the 'Where the days actually go' visual.
+
+	measure '% of turnaround (stages)' = AVERAGE ( 'stages'[pct_of_tat] )
+		formatString: #,0.00
+		displayFolder: Measures
+		/// % of turnaround for the 'Share of total turnaround' visual.
+
+	partition stages = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(ExtractFolder & "\stages.csv"),
+				        [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {
+				        {"stage", type text},
+				        {"avg_days", type number},
+				        {"pct_of_tat", type number}
+				    })
+				in
+				    Typed

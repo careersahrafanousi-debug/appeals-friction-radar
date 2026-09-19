@@ -1,0 +1,58 @@
+table doc_gap
+
+	column bucket
+		dataType: string
+		summarizeBy: none
+		sourceColumn: bucket
+
+	column appeals
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: appeals
+
+	column intake_days
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: intake_days
+
+	column pending_days
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: pending_days
+
+	column avg_tat
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: avg_tat
+
+	measure 'Avg turnaround (days) (doc_gap)' = AVERAGE ( 'doc_gap'[avg_tat] )
+		formatString: #,0.00
+		displayFolder: Measures
+		/// Avg turnaround (days) for the 'The cost of an incomplete intake' visual.
+
+	measure 'Pending-info days (doc_gap)' = SUM ( 'doc_gap'[pending_days] )
+		formatString: #,0.00
+		displayFolder: Measures
+		/// Pending-info days for the 'The cost of an incomplete intake' visual.
+
+	measure 'Intake days (doc_gap)' = SUM ( 'doc_gap'[intake_days] )
+		formatString: #,0.00
+		displayFolder: Measures
+		/// Intake days for the 'The cost of an incomplete intake' visual.
+
+	partition doc_gap = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(ExtractFolder & "\doc_gap.csv"),
+				        [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {
+				        {"bucket", type text},
+				        {"appeals", Int64.Type},
+				        {"intake_days", type number},
+				        {"pending_days", type number},
+				        {"avg_tat", type number}
+				    })
+				in
+				    Typed

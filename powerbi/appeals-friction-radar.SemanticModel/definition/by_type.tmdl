@@ -1,0 +1,58 @@
+table by_type
+
+	column Appeal_Type
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Appeal_Type
+
+	column appeals
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: appeals
+
+	column sla_pct
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: sla_pct
+
+	column avg_tat
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: avg_tat
+
+	column target_days
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: target_days
+
+	measure 'Avg turnaround (days) (by_type)' = AVERAGE ( 'by_type'[avg_tat] )
+		formatString: #,0.00
+		displayFolder: Measures
+		/// Avg turnaround (days) for the 'Turnaround against the target, by appeal type' visual.
+
+	measure 'SLA target (days) (by_type)' = SUM ( 'by_type'[target_days] )
+		formatString: #,0.00
+		displayFolder: Measures
+		/// SLA target (days) for the 'Turnaround against the target, by appeal type' visual.
+
+	measure 'SLA compliance % (by_type)' = AVERAGE ( 'by_type'[sla_pct] )
+		formatString: #,0.00
+		displayFolder: Measures
+		/// SLA compliance % for the 'SLA compliance by type' visual.
+
+	partition by_type = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(ExtractFolder & "\by_type.csv"),
+				        [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {
+				        {"Appeal_Type", type text},
+				        {"appeals", Int64.Type},
+				        {"sla_pct", type number},
+				        {"avg_tat", type number},
+				        {"target_days", Int64.Type}
+				    })
+				in
+				    Typed

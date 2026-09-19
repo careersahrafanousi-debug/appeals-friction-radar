@@ -1,0 +1,101 @@
+table headline
+
+	column appeals
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: appeals
+
+	column sla_pct
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: sla_pct
+
+	column avg_tat
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: avg_tat
+
+	column rework_pct
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: rework_pct
+
+	column escalation_pct
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: escalation_pct
+
+	column routing_pct
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: routing_pct
+
+	column doc_gap_pct
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: doc_gap_pct
+
+	column dq_score
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: dq_score
+
+	measure 'Appeals closed' = SELECTEDVALUE ( 'headline'[appeals] )
+		formatString: #,0
+		displayFolder: Measures
+		/// Appeals closed from the headline query extract.
+
+	measure 'SLA compliance' = SELECTEDVALUE ( 'headline'[sla_pct] )
+		formatString: 0.00"%"
+		displayFolder: Measures
+		/// 30-day target
+
+	measure 'Avg turnaround' = SELECTEDVALUE ( 'headline'[avg_tat] )
+		formatString: #,0.0"d"
+		displayFolder: Measures
+		/// The average is not the problem
+
+	measure 'First-pass routing' = SELECTEDVALUE ( 'headline'[routing_pct] )
+		formatString: 0.00"%"
+		displayFolder: Measures
+		/// First-pass routing from the headline query extract.
+
+	measure 'Rework rate' = SELECTEDVALUE ( 'headline'[rework_pct] )
+		formatString: 0.00"%"
+		displayFolder: Measures
+		/// Rework rate from the headline query extract.
+
+	measure 'Escalation rate' = SELECTEDVALUE ( 'headline'[escalation_pct] )
+		formatString: 0.00"%"
+		displayFolder: Measures
+		/// Escalation rate from the headline query extract.
+
+	measure 'Incomplete at intake' = SELECTEDVALUE ( 'headline'[doc_gap_pct] )
+		formatString: 0.00"%"
+		displayFolder: Measures
+		/// Drives the pending-info clock
+
+	measure 'Data quality score' = SELECTEDVALUE ( 'headline'[dq_score] )
+		formatString: 0.00"%"
+		displayFolder: Measures
+		/// 52 of 4,018 records excluded
+
+	partition headline = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(ExtractFolder & "\headline.csv"),
+				        [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {
+				        {"appeals", Int64.Type},
+				        {"sla_pct", type number},
+				        {"avg_tat", type number},
+				        {"rework_pct", type number},
+				        {"escalation_pct", type number},
+				        {"routing_pct", type number},
+				        {"doc_gap_pct", type number},
+				        {"dq_score", type number}
+				    })
+				in
+				    Typed

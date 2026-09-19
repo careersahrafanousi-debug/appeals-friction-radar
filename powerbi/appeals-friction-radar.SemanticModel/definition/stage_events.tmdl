@@ -1,0 +1,37 @@
+table stage_events
+
+	column Process_Stage
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Process_Stage
+
+	column events
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: events
+
+	column appeals
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: appeals
+
+	column events_per_appeal
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: events_per_appeal
+
+	partition stage_events = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(ExtractFolder & "\stage_events.csv"),
+				        [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {
+				        {"Process_Stage", type text},
+				        {"events", Int64.Type},
+				        {"appeals", Int64.Type},
+				        {"events_per_appeal", type number}
+				    })
+				in
+				    Typed

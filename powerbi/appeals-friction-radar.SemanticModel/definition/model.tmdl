@@ -1,0 +1,26 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["headline", "stages", "by_type", "friction", "by_payer", "monthly", "reasons", "rework", "doc_gap", "priority", "delay_reasons", "stage_events", "worst", "exceptions"]
+
+ref table headline
+ref table stages
+ref table by_type
+ref table friction
+ref table by_payer
+ref table monthly
+ref table reasons
+ref table rework
+ref table doc_gap
+ref table priority
+ref table delay_reasons
+ref table stage_events
+ref table worst
+ref table exceptions
+
+ref expression ExtractFolder

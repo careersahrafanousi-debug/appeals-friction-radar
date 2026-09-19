@@ -1,0 +1,58 @@
+table friction
+
+	column Friction_Category
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Friction_Category
+
+	column appeals
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: appeals
+
+	column avg_tat
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: avg_tat
+
+	column sla_pct
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: sla_pct
+
+	column rework_pct
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: rework_pct
+
+	measure 'Avg turnaround (days) (friction)' = AVERAGE ( 'friction'[avg_tat] )
+		formatString: #,0.00
+		displayFolder: Measures
+		/// Avg turnaround (days) for the 'Friction bands behave the way the score says they should' visual.
+
+	measure 'SLA compliance % (friction)' = AVERAGE ( 'friction'[sla_pct] )
+		formatString: #,0.00
+		displayFolder: Measures
+		/// SLA compliance % for the 'Friction bands behave the way the score says they should' visual.
+
+	measure 'Rework % (friction)' = AVERAGE ( 'friction'[rework_pct] )
+		formatString: #,0.00
+		displayFolder: Measures
+		/// Rework % for the 'Friction bands behave the way the score says they should' visual.
+
+	partition friction = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(ExtractFolder & "\friction.csv"),
+				        [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {
+				        {"Friction_Category", type text},
+				        {"appeals", Int64.Type},
+				        {"avg_tat", type number},
+				        {"sla_pct", type number},
+				        {"rework_pct", type number}
+				    })
+				in
+				    Typed

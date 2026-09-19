@@ -1,0 +1,827 @@
+{
+  "name": "appeals-friction-radar",
+  "compatibilityLevel": 1567,
+  "model": {
+    "culture": "en-US",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "headline",
+        "columns": [
+          {
+            "name": "appeals",
+            "dataType": "int64",
+            "sourceColumn": "appeals",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "sla_pct",
+            "dataType": "double",
+            "sourceColumn": "sla_pct",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "avg_tat",
+            "dataType": "double",
+            "sourceColumn": "avg_tat",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "rework_pct",
+            "dataType": "double",
+            "sourceColumn": "rework_pct",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "escalation_pct",
+            "dataType": "double",
+            "sourceColumn": "escalation_pct",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "routing_pct",
+            "dataType": "double",
+            "sourceColumn": "routing_pct",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "doc_gap_pct",
+            "dataType": "double",
+            "sourceColumn": "doc_gap_pct",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "dq_score",
+            "dataType": "double",
+            "sourceColumn": "dq_score",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "headline",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "Csv.Document(File.Contents(ExtractFolder & \"\\headline.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv])"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Appeals closed",
+            "expression": "SELECTEDVALUE ( 'headline'[appeals] )",
+            "formatString": "#,0",
+            "description": "Appeals closed from the headline query extract."
+          },
+          {
+            "name": "SLA compliance",
+            "expression": "SELECTEDVALUE ( 'headline'[sla_pct] )",
+            "formatString": "0.00\"%\"",
+            "description": "30-day target"
+          },
+          {
+            "name": "Avg turnaround",
+            "expression": "SELECTEDVALUE ( 'headline'[avg_tat] )",
+            "formatString": "#,0.0\"d\"",
+            "description": "The average is not the problem"
+          },
+          {
+            "name": "First-pass routing",
+            "expression": "SELECTEDVALUE ( 'headline'[routing_pct] )",
+            "formatString": "0.00\"%\"",
+            "description": "First-pass routing from the headline query extract."
+          },
+          {
+            "name": "Rework rate",
+            "expression": "SELECTEDVALUE ( 'headline'[rework_pct] )",
+            "formatString": "0.00\"%\"",
+            "description": "Rework rate from the headline query extract."
+          },
+          {
+            "name": "Escalation rate",
+            "expression": "SELECTEDVALUE ( 'headline'[escalation_pct] )",
+            "formatString": "0.00\"%\"",
+            "description": "Escalation rate from the headline query extract."
+          },
+          {
+            "name": "Incomplete at intake",
+            "expression": "SELECTEDVALUE ( 'headline'[doc_gap_pct] )",
+            "formatString": "0.00\"%\"",
+            "description": "Drives the pending-info clock"
+          },
+          {
+            "name": "Data quality score",
+            "expression": "SELECTEDVALUE ( 'headline'[dq_score] )",
+            "formatString": "0.00\"%\"",
+            "description": "52 of 4,018 records excluded"
+          }
+        ]
+      },
+      {
+        "name": "stages",
+        "columns": [
+          {
+            "name": "stage",
+            "dataType": "string",
+            "sourceColumn": "stage",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "avg_days",
+            "dataType": "double",
+            "sourceColumn": "avg_days",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "pct_of_tat",
+            "dataType": "double",
+            "sourceColumn": "pct_of_tat",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "stages",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "Csv.Document(File.Contents(ExtractFolder & \"\\stages.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv])"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Average days in stage (stages)",
+            "expression": "SUM ( 'stages'[avg_days] )",
+            "formatString": "#,0.00",
+            "description": "Average days in stage for the 'Where the days actually go' visual."
+          },
+          {
+            "name": "% of turnaround (stages)",
+            "expression": "AVERAGE ( 'stages'[pct_of_tat] )",
+            "formatString": "#,0.00",
+            "description": "% of turnaround for the 'Share of total turnaround' visual."
+          }
+        ]
+      },
+      {
+        "name": "by_type",
+        "columns": [
+          {
+            "name": "Appeal_Type",
+            "dataType": "string",
+            "sourceColumn": "Appeal_Type",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "appeals",
+            "dataType": "int64",
+            "sourceColumn": "appeals",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "sla_pct",
+            "dataType": "double",
+            "sourceColumn": "sla_pct",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "avg_tat",
+            "dataType": "double",
+            "sourceColumn": "avg_tat",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "target_days",
+            "dataType": "int64",
+            "sourceColumn": "target_days",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "by_type",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "Csv.Document(File.Contents(ExtractFolder & \"\\by_type.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv])"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Avg turnaround (days) (by_type)",
+            "expression": "AVERAGE ( 'by_type'[avg_tat] )",
+            "formatString": "#,0.00",
+            "description": "Avg turnaround (days) for the 'Turnaround against the target, by appeal type' visual."
+          },
+          {
+            "name": "SLA target (days) (by_type)",
+            "expression": "SUM ( 'by_type'[target_days] )",
+            "formatString": "#,0.00",
+            "description": "SLA target (days) for the 'Turnaround against the target, by appeal type' visual."
+          },
+          {
+            "name": "SLA compliance % (by_type)",
+            "expression": "AVERAGE ( 'by_type'[sla_pct] )",
+            "formatString": "#,0.00",
+            "description": "SLA compliance % for the 'SLA compliance by type' visual."
+          }
+        ]
+      },
+      {
+        "name": "friction",
+        "columns": [
+          {
+            "name": "Friction_Category",
+            "dataType": "string",
+            "sourceColumn": "Friction_Category",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "appeals",
+            "dataType": "int64",
+            "sourceColumn": "appeals",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "avg_tat",
+            "dataType": "double",
+            "sourceColumn": "avg_tat",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "sla_pct",
+            "dataType": "double",
+            "sourceColumn": "sla_pct",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "rework_pct",
+            "dataType": "double",
+            "sourceColumn": "rework_pct",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "friction",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "Csv.Document(File.Contents(ExtractFolder & \"\\friction.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv])"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Avg turnaround (days) (friction)",
+            "expression": "AVERAGE ( 'friction'[avg_tat] )",
+            "formatString": "#,0.00",
+            "description": "Avg turnaround (days) for the 'Friction bands behave the way the score says they should' visual."
+          },
+          {
+            "name": "SLA compliance % (friction)",
+            "expression": "AVERAGE ( 'friction'[sla_pct] )",
+            "formatString": "#,0.00",
+            "description": "SLA compliance % for the 'Friction bands behave the way the score says they should' visual."
+          },
+          {
+            "name": "Rework % (friction)",
+            "expression": "AVERAGE ( 'friction'[rework_pct] )",
+            "formatString": "#,0.00",
+            "description": "Rework % for the 'Friction bands behave the way the score says they should' visual."
+          }
+        ]
+      },
+      {
+        "name": "by_payer",
+        "columns": [
+          {
+            "name": "Payer_Name",
+            "dataType": "string",
+            "sourceColumn": "Payer_Name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Payer_Type",
+            "dataType": "string",
+            "sourceColumn": "Payer_Type",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "appeals",
+            "dataType": "int64",
+            "sourceColumn": "appeals",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "avg_tat",
+            "dataType": "double",
+            "sourceColumn": "avg_tat",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "pending_days",
+            "dataType": "double",
+            "sourceColumn": "pending_days",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "sla_pct",
+            "dataType": "double",
+            "sourceColumn": "sla_pct",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "by_payer",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "Csv.Document(File.Contents(ExtractFolder & \"\\by_payer.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv])"
+            }
+          }
+        ]
+      },
+      {
+        "name": "monthly",
+        "columns": [
+          {
+            "name": "month",
+            "dataType": "string",
+            "sourceColumn": "month",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "received",
+            "dataType": "int64",
+            "sourceColumn": "received",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "avg_tat",
+            "dataType": "double",
+            "sourceColumn": "avg_tat",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "sla_pct",
+            "dataType": "double",
+            "sourceColumn": "sla_pct",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "monthly",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "Csv.Document(File.Contents(ExtractFolder & \"\\monthly.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv])"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Appeals received (monthly)",
+            "expression": "SUM ( 'monthly'[received] )",
+            "formatString": "#,0.00",
+            "description": "Appeals received for the 'Monthly trend' visual."
+          },
+          {
+            "name": "SLA compliance % (monthly)",
+            "expression": "AVERAGE ( 'monthly'[sla_pct] )",
+            "formatString": "#,0.00",
+            "description": "SLA compliance % for the 'Monthly trend' visual."
+          },
+          {
+            "name": "Avg turnaround (days) (monthly)",
+            "expression": "AVERAGE ( 'monthly'[avg_tat] )",
+            "formatString": "#,0.00",
+            "description": "Avg turnaround (days) for the 'Monthly trend' visual."
+          }
+        ]
+      },
+      {
+        "name": "reasons",
+        "columns": [
+          {
+            "name": "Reason_Description",
+            "dataType": "string",
+            "sourceColumn": "Reason_Description",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Reason_Category",
+            "dataType": "string",
+            "sourceColumn": "Reason_Category",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "appeals",
+            "dataType": "int64",
+            "sourceColumn": "appeals",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "avg_tat",
+            "dataType": "double",
+            "sourceColumn": "avg_tat",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "overturn_pct",
+            "dataType": "double",
+            "sourceColumn": "overturn_pct",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "reasons",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "Csv.Document(File.Contents(ExtractFolder & \"\\reasons.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv])"
+            }
+          }
+        ]
+      },
+      {
+        "name": "rework",
+        "columns": [
+          {
+            "name": "bucket",
+            "dataType": "string",
+            "sourceColumn": "bucket",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "appeals",
+            "dataType": "int64",
+            "sourceColumn": "appeals",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "avg_tat",
+            "dataType": "double",
+            "sourceColumn": "avg_tat",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "sla_pct",
+            "dataType": "double",
+            "sourceColumn": "sla_pct",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "rework",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "Csv.Document(File.Contents(ExtractFolder & \"\\rework.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv])"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Avg turnaround (days) (rework)",
+            "expression": "AVERAGE ( 'rework'[avg_tat] )",
+            "formatString": "#,0.00",
+            "description": "Avg turnaround (days) for the 'What rework costs' visual."
+          },
+          {
+            "name": "SLA compliance % (rework)",
+            "expression": "AVERAGE ( 'rework'[sla_pct] )",
+            "formatString": "#,0.00",
+            "description": "SLA compliance % for the 'What rework costs' visual."
+          }
+        ]
+      },
+      {
+        "name": "doc_gap",
+        "columns": [
+          {
+            "name": "bucket",
+            "dataType": "string",
+            "sourceColumn": "bucket",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "appeals",
+            "dataType": "int64",
+            "sourceColumn": "appeals",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "intake_days",
+            "dataType": "double",
+            "sourceColumn": "intake_days",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "pending_days",
+            "dataType": "double",
+            "sourceColumn": "pending_days",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "avg_tat",
+            "dataType": "double",
+            "sourceColumn": "avg_tat",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "doc_gap",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "Csv.Document(File.Contents(ExtractFolder & \"\\doc_gap.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv])"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Avg turnaround (days) (doc_gap)",
+            "expression": "AVERAGE ( 'doc_gap'[avg_tat] )",
+            "formatString": "#,0.00",
+            "description": "Avg turnaround (days) for the 'The cost of an incomplete intake' visual."
+          },
+          {
+            "name": "Pending-info days (doc_gap)",
+            "expression": "SUM ( 'doc_gap'[pending_days] )",
+            "formatString": "#,0.00",
+            "description": "Pending-info days for the 'The cost of an incomplete intake' visual."
+          },
+          {
+            "name": "Intake days (doc_gap)",
+            "expression": "SUM ( 'doc_gap'[intake_days] )",
+            "formatString": "#,0.00",
+            "description": "Intake days for the 'The cost of an incomplete intake' visual."
+          }
+        ]
+      },
+      {
+        "name": "priority",
+        "columns": [
+          {
+            "name": "Priority",
+            "dataType": "string",
+            "sourceColumn": "Priority",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "appeals",
+            "dataType": "int64",
+            "sourceColumn": "appeals",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "target_days",
+            "dataType": "int64",
+            "sourceColumn": "target_days",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "avg_tat",
+            "dataType": "double",
+            "sourceColumn": "avg_tat",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "sla_pct",
+            "dataType": "double",
+            "sourceColumn": "sla_pct",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "priority",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "Csv.Document(File.Contents(ExtractFolder & \"\\priority.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv])"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Avg turnaround (days) (priority)",
+            "expression": "AVERAGE ( 'priority'[avg_tat] )",
+            "formatString": "#,0.00",
+            "description": "Avg turnaround (days) for the 'Urgent triage is not actually urgent' visual."
+          },
+          {
+            "name": "SLA target (days) (priority)",
+            "expression": "SUM ( 'priority'[target_days] )",
+            "formatString": "#,0.00",
+            "description": "SLA target (days) for the 'Urgent triage is not actually urgent' visual."
+          },
+          {
+            "name": "SLA compliance % (priority)",
+            "expression": "AVERAGE ( 'priority'[sla_pct] )",
+            "formatString": "#,0.00",
+            "description": "SLA compliance % for the 'Urgent triage is not actually urgent' visual."
+          }
+        ]
+      },
+      {
+        "name": "delay_reasons",
+        "columns": [
+          {
+            "name": "reason",
+            "dataType": "string",
+            "sourceColumn": "reason",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "events",
+            "dataType": "int64",
+            "sourceColumn": "events",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "delay_reasons",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "Csv.Document(File.Contents(ExtractFolder & \"\\delay_reasons.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv])"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Events (delay_reasons)",
+            "expression": "SUM ( 'delay_reasons'[events] )",
+            "formatString": "#,0.00",
+            "description": "Events for the 'Logged delay reasons' visual."
+          }
+        ]
+      },
+      {
+        "name": "stage_events",
+        "columns": [
+          {
+            "name": "Process_Stage",
+            "dataType": "string",
+            "sourceColumn": "Process_Stage",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "events",
+            "dataType": "int64",
+            "sourceColumn": "events",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "appeals",
+            "dataType": "int64",
+            "sourceColumn": "appeals",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "events_per_appeal",
+            "dataType": "double",
+            "sourceColumn": "events_per_appeal",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "stage_events",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "Csv.Document(File.Contents(ExtractFolder & \"\\stage_events.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv])"
+            }
+          }
+        ]
+      },
+      {
+        "name": "worst",
+        "columns": [
+          {
+            "name": "Appeal_ID",
+            "dataType": "string",
+            "sourceColumn": "Appeal_ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Appeal_Type",
+            "dataType": "string",
+            "sourceColumn": "Appeal_Type",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Priority",
+            "dataType": "string",
+            "sourceColumn": "Priority",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Status",
+            "dataType": "string",
+            "sourceColumn": "Status",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Turnaround_Days",
+            "dataType": "double",
+            "sourceColumn": "Turnaround_Days",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Review_Wait_Days",
+            "dataType": "int64",
+            "sourceColumn": "Review_Wait_Days",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Reassignment_Count",
+            "dataType": "int64",
+            "sourceColumn": "Reassignment_Count",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Friction_Category",
+            "dataType": "string",
+            "sourceColumn": "Friction_Category",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "worst",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "Csv.Document(File.Contents(ExtractFolder & \"\\worst.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv])"
+            }
+          }
+        ]
+      },
+      {
+        "name": "exceptions",
+        "columns": [
+          {
+            "name": "Rule_ID",
+            "dataType": "string",
+            "sourceColumn": "Rule_ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Severity",
+            "dataType": "string",
+            "sourceColumn": "Severity",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Status",
+            "dataType": "string",
+            "sourceColumn": "Status",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "exceptions",
+            "dataType": "int64",
+            "sourceColumn": "exceptions",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "exceptions",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "Csv.Document(File.Contents(ExtractFolder & \"\\exceptions.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv])"
+            }
+          }
+        ]
+      }
+    ],
+    "expressions": [
+      {
+        "name": "ExtractFolder",
+        "kind": "m",
+        "expression": "\"..\\..\\bi_extracts\" meta [IsParameterQuery=true, Type=\"Text\", IsParameterQueryRequired=true]",
+        "description": "Folder holding the CSV extracts written by src/build_bi_assets.py."
+      }
+    ]
+  }
+}
