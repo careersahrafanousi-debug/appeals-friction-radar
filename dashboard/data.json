@@ -1,0 +1,723 @@
+{
+ "headline": [
+  {
+   "appeals": 3966,
+   "sla_pct": 49.62,
+   "avg_tat": 14.9,
+   "rework_pct": 13.51,
+   "escalation_pct": 10.44,
+   "routing_pct": 87.54,
+   "doc_gap_pct": 24.1,
+   "dq_score": 98.71
+  }
+ ],
+ "stages": [
+  {
+   "stage": "Intake",
+   "avg_days": 0.9,
+   "pct_of_tat": 6.0
+  },
+  {
+   "stage": "Routing",
+   "avg_days": 1.88,
+   "pct_of_tat": 12.6
+  },
+  {
+   "stage": "Waiting for review",
+   "avg_days": 1.61,
+   "pct_of_tat": 10.8
+  },
+  {
+   "stage": "Clinical review",
+   "avg_days": 9.08,
+   "pct_of_tat": 60.9
+  },
+  {
+   "stage": "Closure",
+   "avg_days": 1.46,
+   "pct_of_tat": 9.8
+  }
+ ],
+ "by_type": [
+  {
+   "Appeal_Type": "Pharmacy",
+   "appeals": 338,
+   "sla_pct": 14.38,
+   "avg_tat": 15.2,
+   "target_days": 7
+  },
+  {
+   "Appeal_Type": "Authorization",
+   "appeals": 897,
+   "sla_pct": 17.62,
+   "avg_tat": 14.4,
+   "target_days": 7
+  },
+  {
+   "Appeal_Type": "Clinical",
+   "appeals": 1448,
+   "sla_pct": 50.25,
+   "avg_tat": 15.0,
+   "target_days": 14
+  },
+  {
+   "Appeal_Type": "Claims Payment",
+   "appeals": 273,
+   "sla_pct": 80.3,
+   "avg_tat": 15.8,
+   "target_days": 30
+  },
+  {
+   "Appeal_Type": "Administrative",
+   "appeals": 1010,
+   "sla_pct": 80.6,
+   "avg_tat": 14.9,
+   "target_days": 30
+  }
+ ],
+ "friction": [
+  {
+   "Friction_Category": "Low friction",
+   "appeals": 2626,
+   "avg_tat": 11.8,
+   "sla_pct": 59.03,
+   "rework_pct": 7.12
+  },
+  {
+   "Friction_Category": "Moderate friction",
+   "appeals": 636,
+   "avg_tat": 15.6,
+   "sla_pct": 43.95,
+   "rework_pct": 22.17
+  },
+  {
+   "Friction_Category": "High friction",
+   "appeals": 394,
+   "avg_tat": 23.4,
+   "sla_pct": 25.48,
+   "rework_pct": 25.38
+  },
+  {
+   "Friction_Category": "Critical friction",
+   "appeals": 310,
+   "avg_tat": 30.8,
+   "sla_pct": 8.9,
+   "rework_pct": 34.84
+  }
+ ],
+ "by_payer": [
+  {
+   "Payer_Name": "Statewide Medicaid MCO",
+   "Payer_Type": "Medicaid",
+   "appeals": 663,
+   "avg_tat": 15.7,
+   "pending_days": 1.53,
+   "sla_pct": 47.79
+  },
+  {
+   "Payer_Name": "Cottonwood Mutual",
+   "Payer_Type": "Commercial",
+   "appeals": 429,
+   "avg_tat": 15.3,
+   "pending_days": 1.22,
+   "sla_pct": 48.76
+  },
+  {
+   "Payer_Name": "Panhandle Care Partners",
+   "Payer_Type": "Medicaid",
+   "appeals": 360,
+   "avg_tat": 15.1,
+   "pending_days": 1.2,
+   "sla_pct": 47.95
+  },
+  {
+   "Payer_Name": "Brazos Valley Benefits",
+   "Payer_Type": "Commercial",
+   "appeals": 735,
+   "avg_tat": 15.0,
+   "pending_days": 1.07,
+   "sla_pct": 53.59
+  },
+  {
+   "Payer_Name": "Meridian Select",
+   "Payer_Type": "Commercial",
+   "appeals": 260,
+   "avg_tat": 14.7,
+   "pending_days": 1.27,
+   "sla_pct": 55.78
+  },
+  {
+   "Payer_Name": "Trinity Health Plan",
+   "Payer_Type": "Commercial",
+   "appeals": 893,
+   "avg_tat": 14.5,
+   "pending_days": 1.31,
+   "sla_pct": 52.36
+  },
+  {
+   "Payer_Name": "Silver Ridge Advantage",
+   "Payer_Type": "Medicare Advantage",
+   "appeals": 626,
+   "avg_tat": 14.4,
+   "pending_days": 1.09,
+   "sla_pct": 42.08
+  }
+ ],
+ "monthly": [
+  {
+   "month": "2026-01",
+   "received": 477,
+   "avg_tat": 15.4,
+   "sla_pct": 48.85
+  },
+  {
+   "month": "2026-02",
+   "received": 385,
+   "avg_tat": 15.0,
+   "sla_pct": 51.69
+  },
+  {
+   "month": "2026-03",
+   "received": 459,
+   "avg_tat": 15.3,
+   "sla_pct": 47.49
+  },
+  {
+   "month": "2026-04",
+   "received": 449,
+   "avg_tat": 16.2,
+   "sla_pct": 44.77
+  },
+  {
+   "month": "2026-05",
+   "received": 446,
+   "avg_tat": 15.1,
+   "sla_pct": 45.96
+  },
+  {
+   "month": "2026-06",
+   "received": 431,
+   "avg_tat": 14.7,
+   "sla_pct": 51.74
+  },
+  {
+   "month": "2026-07",
+   "received": 448,
+   "avg_tat": 15.1,
+   "sla_pct": 49.11
+  },
+  {
+   "month": "2026-08",
+   "received": 462,
+   "avg_tat": 14.4,
+   "sla_pct": 51.54
+  },
+  {
+   "month": "2026-09",
+   "received": 409,
+   "avg_tat": 11.0,
+   "sla_pct": 61.95
+  }
+ ],
+ "reasons": [
+  {
+   "Reason_Description": "Missing clinical documentation",
+   "Reason_Category": "Documentation",
+   "appeals": 602,
+   "avg_tat": 15.4,
+   "overturn_pct": 26.58
+  },
+  {
+   "Reason_Description": "Awaiting provider records",
+   "Reason_Category": "Documentation",
+   "appeals": 455,
+   "avg_tat": 16.4,
+   "overturn_pct": 23.3
+  },
+  {
+   "Reason_Description": "Routed to wrong review team",
+   "Reason_Category": "Routing",
+   "appeals": 454,
+   "avg_tat": 17.6,
+   "overturn_pct": 26.65
+  },
+  {
+   "Reason_Description": "Incomplete intake form",
+   "Reason_Category": "Intake",
+   "appeals": 339,
+   "avg_tat": 13.4,
+   "overturn_pct": 29.79
+  },
+  {
+   "Reason_Description": "Prior authorization not on file",
+   "Reason_Category": "Authorization",
+   "appeals": 318,
+   "avg_tat": 13.7,
+   "overturn_pct": 32.08
+  },
+  {
+   "Reason_Description": "Missing member signature / AOR",
+   "Reason_Category": "Documentation",
+   "appeals": 287,
+   "avg_tat": 16.8,
+   "overturn_pct": 19.51
+  },
+  {
+   "Reason_Description": "Member eligibility unclear",
+   "Reason_Category": "Eligibility",
+   "appeals": 268,
+   "avg_tat": 14.1,
+   "overturn_pct": 35.07
+  },
+  {
+   "Reason_Description": "Medical necessity dispute",
+   "Reason_Category": "Clinical",
+   "appeals": 225,
+   "avg_tat": 14.5,
+   "overturn_pct": 29.78
+  },
+  {
+   "Reason_Description": "Coding discrepancy",
+   "Reason_Category": "Coding",
+   "appeals": 208,
+   "avg_tat": 13.8,
+   "overturn_pct": 31.25
+  },
+  {
+   "Reason_Description": "Duplicate appeal submitted",
+   "Reason_Category": "Intake",
+   "appeals": 187,
+   "avg_tat": 13.2,
+   "overturn_pct": 29.95
+  },
+  {
+   "Reason_Description": "Reviewer capacity constraint",
+   "Reason_Category": "Capacity",
+   "appeals": 176,
+   "avg_tat": 13.0,
+   "overturn_pct": 27.27
+  },
+  {
+   "Reason_Description": "Policy exception required",
+   "Reason_Category": "Policy",
+   "appeals": 135,
+   "avg_tat": 13.2,
+   "overturn_pct": 29.63
+  }
+ ],
+ "rework": [
+  {
+   "bucket": "Clean first pass",
+   "appeals": 3430,
+   "avg_tat": 14.0,
+   "sla_pct": 52.65
+  },
+  {
+   "bucket": "Reworked",
+   "appeals": 536,
+   "avg_tat": 21.1,
+   "sla_pct": 29.41
+  }
+ ],
+ "doc_gap": [
+  {
+   "bucket": "Documentation complete at intake",
+   "appeals": 3010,
+   "intake_days": 0.89,
+   "pending_days": 0.0,
+   "avg_tat": 12.7
+  },
+  {
+   "bucket": "Documentation incomplete at intake",
+   "appeals": 956,
+   "intake_days": 0.92,
+   "pending_days": 5.17,
+   "avg_tat": 22.1
+  }
+ ],
+ "priority": [
+  {
+   "Priority": "Standard",
+   "appeals": 2678,
+   "target_days": 30,
+   "avg_tat": 14.8,
+   "sla_pct": 56.8
+  },
+  {
+   "Priority": "Low",
+   "appeals": 604,
+   "target_days": 30,
+   "avg_tat": 15.0,
+   "sla_pct": 55.03
+  },
+  {
+   "Priority": "Urgent",
+   "appeals": 684,
+   "target_days": 7,
+   "avg_tat": 15.5,
+   "sla_pct": 16.51
+  }
+ ],
+ "delay_reasons": [
+  {
+   "reason": "Routed to wrong review team",
+   "events": 1645
+  },
+  {
+   "reason": "Awaiting provider records",
+   "events": 1355
+  },
+  {
+   "reason": "Incomplete intake form",
+   "events": 965
+  },
+  {
+   "reason": "Missing clinical documentation",
+   "events": 528
+  },
+  {
+   "reason": "Escalated by provider relations",
+   "events": 402
+  }
+ ],
+ "stage_events": [
+  {
+   "Process_Stage": "Intake",
+   "events": 7990,
+   "appeals": 4000,
+   "events_per_appeal": 2.0
+  },
+  {
+   "Process_Stage": "Routing",
+   "events": 5616,
+   "appeals": 3971,
+   "events_per_appeal": 1.41
+  },
+  {
+   "Process_Stage": "Review",
+   "events": 4482,
+   "appeals": 3954,
+   "events_per_appeal": 1.13
+  },
+  {
+   "Process_Stage": "Classification",
+   "events": 3990,
+   "appeals": 3990,
+   "events_per_appeal": 1.0
+  },
+  {
+   "Process_Stage": "Validation",
+   "events": 3990,
+   "appeals": 3990,
+   "events_per_appeal": 1.0
+  },
+  {
+   "Process_Stage": "Closure",
+   "events": 3809,
+   "appeals": 3809,
+   "events_per_appeal": 1.0
+  },
+  {
+   "Process_Stage": "Decision",
+   "events": 3809,
+   "appeals": 3809,
+   "events_per_appeal": 1.0
+  },
+  {
+   "Process_Stage": "Information Request",
+   "events": 1355,
+   "appeals": 692,
+   "events_per_appeal": 1.96
+  },
+  {
+   "Process_Stage": "Escalation",
+   "events": 402,
+   "appeals": 402,
+   "events_per_appeal": 1.0
+  }
+ ],
+ "worst": [
+  {
+   "Appeal_ID": "APL-2026-002044",
+   "Appeal_Type": "Clinical",
+   "Priority": "Low",
+   "Status": "Closed",
+   "Turnaround_Days": 44.0,
+   "Review_Wait_Days": 4,
+   "Reassignment_Count": 3,
+   "Friction_Category": "Critical friction"
+  },
+  {
+   "Appeal_ID": "APL-2026-003359",
+   "Appeal_Type": "Clinical",
+   "Priority": "Standard",
+   "Status": "Closed",
+   "Turnaround_Days": 49.0,
+   "Review_Wait_Days": 0,
+   "Reassignment_Count": 2,
+   "Friction_Category": "Critical friction"
+  },
+  {
+   "Appeal_ID": "APL-2026-000087",
+   "Appeal_Type": "Claims Payment",
+   "Priority": "Standard",
+   "Status": "Closed",
+   "Turnaround_Days": 45.0,
+   "Review_Wait_Days": 0,
+   "Reassignment_Count": 2,
+   "Friction_Category": "Critical friction"
+  },
+  {
+   "Appeal_ID": "APL-2026-000209",
+   "Appeal_Type": "Clinical",
+   "Priority": "Standard",
+   "Status": "Closed",
+   "Turnaround_Days": 41.0,
+   "Review_Wait_Days": 4,
+   "Reassignment_Count": 2,
+   "Friction_Category": "Critical friction"
+  },
+  {
+   "Appeal_ID": "APL-2026-002532",
+   "Appeal_Type": "Clinical",
+   "Priority": "Low",
+   "Status": "Closed",
+   "Turnaround_Days": 37.0,
+   "Review_Wait_Days": 0,
+   "Reassignment_Count": 3,
+   "Friction_Category": "Critical friction"
+  },
+  {
+   "Appeal_ID": "APL-2026-001180",
+   "Appeal_Type": "Administrative",
+   "Priority": "Standard",
+   "Status": "Closed",
+   "Turnaround_Days": 35.0,
+   "Review_Wait_Days": 2,
+   "Reassignment_Count": 2,
+   "Friction_Category": "Critical friction"
+  },
+  {
+   "Appeal_ID": "APL-2026-002266",
+   "Appeal_Type": "Clinical",
+   "Priority": "Standard",
+   "Status": "Closed",
+   "Turnaround_Days": 33.0,
+   "Review_Wait_Days": 0,
+   "Reassignment_Count": 2,
+   "Friction_Category": "Critical friction"
+  },
+  {
+   "Appeal_ID": "APL-2026-001053",
+   "Appeal_Type": "Clinical",
+   "Priority": "Urgent",
+   "Status": "Closed",
+   "Turnaround_Days": 31.0,
+   "Review_Wait_Days": 0,
+   "Reassignment_Count": 3,
+   "Friction_Category": "Critical friction"
+  },
+  {
+   "Appeal_ID": "APL-2026-002293",
+   "Appeal_Type": "Authorization",
+   "Priority": "Urgent",
+   "Status": "Closed",
+   "Turnaround_Days": 43.0,
+   "Review_Wait_Days": 1,
+   "Reassignment_Count": 3,
+   "Friction_Category": "Critical friction"
+  },
+  {
+   "Appeal_ID": "APL-2026-002484",
+   "Appeal_Type": "Administrative",
+   "Priority": "Standard",
+   "Status": "Closed",
+   "Turnaround_Days": 50.0,
+   "Review_Wait_Days": 1,
+   "Reassignment_Count": 1,
+   "Friction_Category": "Critical friction"
+  },
+  {
+   "Appeal_ID": "APL-2026-002706",
+   "Appeal_Type": "Claims Payment",
+   "Priority": "Standard",
+   "Status": "Closed",
+   "Turnaround_Days": 46.0,
+   "Review_Wait_Days": 1,
+   "Reassignment_Count": 2,
+   "Friction_Category": "Critical friction"
+  },
+  {
+   "Appeal_ID": "APL-2026-002682",
+   "Appeal_Type": "Administrative",
+   "Priority": "Urgent",
+   "Status": "Closed",
+   "Turnaround_Days": 44.0,
+   "Review_Wait_Days": 3,
+   "Reassignment_Count": 1,
+   "Friction_Category": "Critical friction"
+  },
+  {
+   "Appeal_ID": "APL-2026-000705",
+   "Appeal_Type": "Claims Payment",
+   "Priority": "Urgent",
+   "Status": "Closed",
+   "Turnaround_Days": 42.0,
+   "Review_Wait_Days": 1,
+   "Reassignment_Count": 2,
+   "Friction_Category": "Critical friction"
+  },
+  {
+   "Appeal_ID": "APL-2026-002146",
+   "Appeal_Type": "Administrative",
+   "Priority": "Low",
+   "Status": "Closed",
+   "Turnaround_Days": 41.0,
+   "Review_Wait_Days": 3,
+   "Reassignment_Count": 2,
+   "Friction_Category": "Critical friction"
+  },
+  {
+   "Appeal_ID": "APL-2026-002729",
+   "Appeal_Type": "Authorization",
+   "Priority": "Standard",
+   "Status": "Closed",
+   "Turnaround_Days": 41.0,
+   "Review_Wait_Days": 2,
+   "Reassignment_Count": 2,
+   "Friction_Category": "Critical friction"
+  },
+  {
+   "Appeal_ID": "APL-2026-001040",
+   "Appeal_Type": "Clinical",
+   "Priority": "Standard",
+   "Status": "Closed",
+   "Turnaround_Days": 38.0,
+   "Review_Wait_Days": 1,
+   "Reassignment_Count": 2,
+   "Friction_Category": "Critical friction"
+  },
+  {
+   "Appeal_ID": "APL-2026-002148",
+   "Appeal_Type": "Administrative",
+   "Priority": "Low",
+   "Status": "Closed",
+   "Turnaround_Days": 34.0,
+   "Review_Wait_Days": 3,
+   "Reassignment_Count": 1,
+   "Friction_Category": "Critical friction"
+  },
+  {
+   "Appeal_ID": "APL-2026-000300",
+   "Appeal_Type": "Authorization",
+   "Priority": "Urgent",
+   "Status": "Closed",
+   "Turnaround_Days": 34.0,
+   "Review_Wait_Days": 2,
+   "Reassignment_Count": 3,
+   "Friction_Category": "Critical friction"
+  },
+  {
+   "Appeal_ID": "APL-2026-002100",
+   "Appeal_Type": "Authorization",
+   "Priority": "Urgent",
+   "Status": "Closed",
+   "Turnaround_Days": 33.0,
+   "Review_Wait_Days": 2,
+   "Reassignment_Count": 1,
+   "Friction_Category": "Critical friction"
+  },
+  {
+   "Appeal_ID": "APL-2026-003910",
+   "Appeal_Type": "Clinical",
+   "Priority": "Standard",
+   "Status": "Closed",
+   "Turnaround_Days": 32.0,
+   "Review_Wait_Days": 0,
+   "Reassignment_Count": 2,
+   "Friction_Category": "Critical friction"
+  },
+  {
+   "Appeal_ID": "APL-2026-001889",
+   "Appeal_Type": "Administrative",
+   "Priority": "Standard",
+   "Status": "Closed",
+   "Turnaround_Days": 27.0,
+   "Review_Wait_Days": 0,
+   "Reassignment_Count": 2,
+   "Friction_Category": "Critical friction"
+  },
+  {
+   "Appeal_ID": "APL-2026-000793",
+   "Appeal_Type": "Clinical",
+   "Priority": "Urgent",
+   "Status": "Closed",
+   "Turnaround_Days": 53.0,
+   "Review_Wait_Days": 3,
+   "Reassignment_Count": 3,
+   "Friction_Category": "Critical friction"
+  },
+  {
+   "Appeal_ID": "APL-2026-002850",
+   "Appeal_Type": "Clinical",
+   "Priority": "Urgent",
+   "Status": "Closed",
+   "Turnaround_Days": 52.0,
+   "Review_Wait_Days": 5,
+   "Reassignment_Count": 3,
+   "Friction_Category": "Critical friction"
+  },
+  {
+   "Appeal_ID": "APL-2026-001291",
+   "Appeal_Type": "Authorization",
+   "Priority": "Standard",
+   "Status": "Closed",
+   "Turnaround_Days": 45.0,
+   "Review_Wait_Days": 3,
+   "Reassignment_Count": 3,
+   "Friction_Category": "Critical friction"
+  },
+  {
+   "Appeal_ID": "APL-2026-003224",
+   "Appeal_Type": "Clinical",
+   "Priority": "Low",
+   "Status": "Closed",
+   "Turnaround_Days": 38.0,
+   "Review_Wait_Days": 2,
+   "Reassignment_Count": 3,
+   "Friction_Category": "Critical friction"
+  }
+ ],
+ "exceptions": [
+  {
+   "Rule_ID": "DQ-02",
+   "Severity": "Critical",
+   "Status": "Open",
+   "exceptions": 22
+  },
+  {
+   "Rule_ID": "DQ-01",
+   "Severity": "High",
+   "Status": "Open",
+   "exceptions": 18
+  },
+  {
+   "Rule_ID": "DQ-05",
+   "Severity": "Critical",
+   "Status": "Open",
+   "exceptions": 12
+  },
+  {
+   "Rule_ID": "DQ-06",
+   "Severity": "Critical",
+   "Status": "Open",
+   "exceptions": 12
+  },
+  {
+   "Rule_ID": "DQ-03",
+   "Severity": "Critical",
+   "Status": "Open",
+   "exceptions": 2
+  }
+ ]
+}
