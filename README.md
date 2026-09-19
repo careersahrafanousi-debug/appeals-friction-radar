@@ -2,6 +2,16 @@
 
 Where does an appeal actually lose time?
 
+**Live dashboard: [https://careersahrafanousi-debug.github.io/appeals-friction-radar/dashboard/](https://careersahrafanousi-debug.github.io/appeals-friction-radar/dashboard/)**
+
+Built by [`src/build_dashboard.py`](src/build_dashboard.py) from the query set in
+[`dashboard/dashboard_config.json`](dashboard/dashboard_config.json), run against `data/appeals.db`.
+Every number on the page comes out of a SQL query held in that config file, so the page
+cannot drift away from the analysis in [`sql/`](sql/) — regenerate it with
+`python src/load_sqlite.py && python src/build_dashboard.py`. Chosen over a `.pbix`
+because a reviewer can open a URL and cannot open a binary.
+
+
 Most appeals reporting stops at turnaround time. That tells you the queue is slow, not
 why. This project rebuilds the appeals workflow as event-level data so delay can be
 traced to a specific step — intake validation, routing, waiting on records, handoffs,
@@ -197,8 +207,9 @@ mandatory closure fields → weekly routing and quality review that feeds the ru
 - Holidays, staffing schedules, part-time capacity, and reviewer skill are not modeled.
 - Friction Score weights are unvalidated.
 - No cost or payment dimension, so nothing here speaks to financial impact.
-- Dashboard is described and specified in `docs/`; the `.pbix` is not included because
-  Power BI files are binary and do not diff usefully in git. The data model, measures, and
+- Dashboard is built and live at [https://careersahrafanousi-debug.github.io/appeals-friction-radar/dashboard/](https://careersahrafanousi-debug.github.io/appeals-friction-radar/dashboard/), generated from SQL by
+  `src/build_dashboard.py`. No `.pbix` is committed: Power BI files are binary, do not diff
+  usefully in git, and cannot be opened by a reviewer without a licence. The data model, measures, and
   page specs are all here, which is what a reviewer would need to rebuild it.
 
 ## Repo layout
