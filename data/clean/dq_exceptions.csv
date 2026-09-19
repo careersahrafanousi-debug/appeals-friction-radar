@@ -1,0 +1,67 @@
+Exception_ID,Rule_ID,Record_ID,Severity,Description,Owner,Status
+EX-00001,DQ-01,APL-2026-000371,High,Duplicate Appeal_ID in extract; kept first occurrence,Reporting Analyst,Open
+EX-00002,DQ-01,APL-2026-003598,High,Duplicate Appeal_ID in extract; kept first occurrence,Reporting Analyst,Open
+EX-00003,DQ-01,APL-2026-001691,High,Duplicate Appeal_ID in extract; kept first occurrence,Reporting Analyst,Open
+EX-00004,DQ-01,APL-2026-000934,High,Duplicate Appeal_ID in extract; kept first occurrence,Reporting Analyst,Open
+EX-00005,DQ-01,APL-2026-001931,High,Duplicate Appeal_ID in extract; kept first occurrence,Reporting Analyst,Open
+EX-00006,DQ-01,APL-2026-000597,High,Duplicate Appeal_ID in extract; kept first occurrence,Reporting Analyst,Open
+EX-00007,DQ-01,APL-2026-003497,High,Duplicate Appeal_ID in extract; kept first occurrence,Reporting Analyst,Open
+EX-00008,DQ-01,APL-2026-002755,High,Duplicate Appeal_ID in extract; kept first occurrence,Reporting Analyst,Open
+EX-00009,DQ-01,APL-2026-002484,High,Duplicate Appeal_ID in extract; kept first occurrence,Reporting Analyst,Open
+EX-00010,DQ-01,APL-2026-003682,High,Duplicate Appeal_ID in extract; kept first occurrence,Reporting Analyst,Open
+EX-00011,DQ-01,APL-2026-002590,High,Duplicate Appeal_ID in extract; kept first occurrence,Reporting Analyst,Open
+EX-00012,DQ-01,APL-2026-003396,High,Duplicate Appeal_ID in extract; kept first occurrence,Reporting Analyst,Open
+EX-00013,DQ-01,APL-2026-000379,High,Duplicate Appeal_ID in extract; kept first occurrence,Reporting Analyst,Open
+EX-00014,DQ-01,APL-2026-002061,High,Duplicate Appeal_ID in extract; kept first occurrence,Reporting Analyst,Open
+EX-00015,DQ-01,APL-2026-002916,High,Duplicate Appeal_ID in extract; kept first occurrence,Reporting Analyst,Open
+EX-00016,DQ-01,APL-2026-000306,High,Duplicate Appeal_ID in extract; kept first occurrence,Reporting Analyst,Open
+EX-00017,DQ-01,APL-2026-000644,High,Duplicate Appeal_ID in extract; kept first occurrence,Reporting Analyst,Open
+EX-00018,DQ-01,APL-2026-002899,High,Duplicate Appeal_ID in extract; kept first occurrence,Reporting Analyst,Open
+EX-00019,DQ-02,APL-2026-001350,Critical,Status is Closed but Outcome is blank,Reporting Analyst,Open
+EX-00020,DQ-02,APL-2026-003962,Critical,Status is Closed but Outcome is blank,Reporting Analyst,Open
+EX-00021,DQ-02,APL-2026-000872,Critical,Status is Closed but Outcome is blank,Reporting Analyst,Open
+EX-00022,DQ-02,APL-2026-001198,Critical,Status is Closed but Outcome is blank,Reporting Analyst,Open
+EX-00023,DQ-02,APL-2026-003002,Critical,Status is Closed but Outcome is blank,Reporting Analyst,Open
+EX-00024,DQ-02,APL-2026-000886,Critical,Status is Closed but Outcome is blank,Reporting Analyst,Open
+EX-00025,DQ-02,APL-2026-001056,Critical,Status is Closed but Outcome is blank,Reporting Analyst,Open
+EX-00026,DQ-02,APL-2026-003393,Critical,Status is Closed but Outcome is blank,Reporting Analyst,Open
+EX-00027,DQ-02,APL-2026-001917,Critical,Status is Closed but Outcome is blank,Reporting Analyst,Open
+EX-00028,DQ-02,APL-2026-002939,Critical,Status is Closed but Outcome is blank,Reporting Analyst,Open
+EX-00029,DQ-02,APL-2026-003724,Critical,Status is Closed but Outcome is blank,Reporting Analyst,Open
+EX-00030,DQ-02,APL-2026-000843,Critical,Status is Closed but Outcome is blank,Reporting Analyst,Open
+EX-00031,DQ-02,APL-2026-000814,Critical,Status is Closed but Outcome is blank,Reporting Analyst,Open
+EX-00032,DQ-02,APL-2026-000144,Critical,Status is Closed but Outcome is blank,Reporting Analyst,Open
+EX-00033,DQ-02,APL-2026-002707,Critical,Status is Closed but Outcome is blank,Reporting Analyst,Open
+EX-00034,DQ-02,APL-2026-001881,Critical,Status is Closed but Outcome is blank,Reporting Analyst,Open
+EX-00035,DQ-02,APL-2026-002530,Critical,Status is Closed but Outcome is blank,Reporting Analyst,Open
+EX-00036,DQ-02,APL-2026-001186,Critical,Status is Closed but Outcome is blank,Reporting Analyst,Open
+EX-00037,DQ-02,APL-2026-002927,Critical,Status is Closed but Outcome is blank,Reporting Analyst,Open
+EX-00038,DQ-02,APL-2026-001343,Critical,Status is Closed but Outcome is blank,Reporting Analyst,Open
+EX-00039,DQ-02,APL-2026-001816,Critical,Status is Closed but Outcome is blank,Reporting Analyst,Open
+EX-00040,DQ-02,APL-2026-000053,Critical,Status is Closed but Outcome is blank,Reporting Analyst,Open
+EX-00041,DQ-03,APL-2026-000814,Critical,Status is Closed but Closed_Date is blank,Reporting Analyst,Open
+EX-00042,DQ-03,APL-2026-001816,Critical,Status is Closed but Closed_Date is blank,Reporting Analyst,Open
+EX-00043,DQ-05,APL-2026-001496,Critical,Closed_Date is earlier than Decision_Date,Reporting Analyst,Open
+EX-00044,DQ-05,APL-2026-001516,Critical,Closed_Date is earlier than Decision_Date,Reporting Analyst,Open
+EX-00045,DQ-05,APL-2026-001201,Critical,Closed_Date is earlier than Decision_Date,Reporting Analyst,Open
+EX-00046,DQ-05,APL-2026-000117,Critical,Closed_Date is earlier than Decision_Date,Reporting Analyst,Open
+EX-00047,DQ-05,APL-2026-000265,Critical,Closed_Date is earlier than Decision_Date,Reporting Analyst,Open
+EX-00048,DQ-05,APL-2026-002720,Critical,Closed_Date is earlier than Decision_Date,Reporting Analyst,Open
+EX-00049,DQ-05,APL-2026-002626,Critical,Closed_Date is earlier than Decision_Date,Reporting Analyst,Open
+EX-00050,DQ-05,APL-2026-000575,Critical,Closed_Date is earlier than Decision_Date,Reporting Analyst,Open
+EX-00051,DQ-05,APL-2026-001682,Critical,Closed_Date is earlier than Decision_Date,Reporting Analyst,Open
+EX-00052,DQ-05,APL-2026-001951,Critical,Closed_Date is earlier than Decision_Date,Reporting Analyst,Open
+EX-00053,DQ-05,APL-2026-003551,Critical,Closed_Date is earlier than Decision_Date,Reporting Analyst,Open
+EX-00054,DQ-05,APL-2026-001739,Critical,Closed_Date is earlier than Decision_Date,Reporting Analyst,Open
+EX-00055,DQ-06,APL-2026-001496,Critical,Negative turnaround time,Reporting Analyst,Open
+EX-00056,DQ-06,APL-2026-001516,Critical,Negative turnaround time,Reporting Analyst,Open
+EX-00057,DQ-06,APL-2026-001201,Critical,Negative turnaround time,Reporting Analyst,Open
+EX-00058,DQ-06,APL-2026-000117,Critical,Negative turnaround time,Reporting Analyst,Open
+EX-00059,DQ-06,APL-2026-000265,Critical,Negative turnaround time,Reporting Analyst,Open
+EX-00060,DQ-06,APL-2026-002720,Critical,Negative turnaround time,Reporting Analyst,Open
+EX-00061,DQ-06,APL-2026-002626,Critical,Negative turnaround time,Reporting Analyst,Open
+EX-00062,DQ-06,APL-2026-000575,Critical,Negative turnaround time,Reporting Analyst,Open
+EX-00063,DQ-06,APL-2026-001682,Critical,Negative turnaround time,Reporting Analyst,Open
+EX-00064,DQ-06,APL-2026-001951,Critical,Negative turnaround time,Reporting Analyst,Open
+EX-00065,DQ-06,APL-2026-003551,Critical,Negative turnaround time,Reporting Analyst,Open
+EX-00066,DQ-06,APL-2026-001739,Critical,Negative turnaround time,Reporting Analyst,Open
