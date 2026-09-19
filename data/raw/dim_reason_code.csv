@@ -1,0 +1,16 @@
+Reason_Code,Reason_Description,Reason_Category
+RC-01,Missing clinical documentation,Documentation
+RC-02,Incomplete intake form,Intake
+RC-03,Prior authorization not on file,Authorization
+RC-04,Routed to wrong review team,Routing
+RC-05,Awaiting provider records,Documentation
+RC-06,Member eligibility unclear,Eligibility
+RC-07,Medical necessity dispute,Clinical
+RC-08,Coding discrepancy,Coding
+RC-09,Duplicate appeal submitted,Intake
+RC-10,Reviewer capacity constraint,Capacity
+RC-11,Policy exception required,Policy
+RC-12,Missing member signature / AOR,Documentation
+RC-13,System outage delay,Technology
+RC-14,Escalated by provider relations,Escalation
+RC-15,Second-level review required,Clinical

@@ -1,0 +1,9 @@
+Team_ID,Team_Name,Team_Function,Headcount
+TM-01,Intake Review,Administrative,9
+TM-02,Clinical Review A,Clinical,11
+TM-03,Clinical Review B,Clinical,10
+TM-04,Authorization Appeals,Administrative,8
+TM-05,Pharmacy Appeals,Clinical,6
+TM-06,Complex / Escalation,Clinical,7
+TM-07,Medicaid Appeals,Administrative,8
+TM-08,Quality Audit,Administrative,4
