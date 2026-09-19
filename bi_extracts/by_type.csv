@@ -1,0 +1,6 @@
+Appeal_Type,appeals,sla_pct,avg_tat,target_days
+Pharmacy,338,14.38,15.2,7
+Authorization,897,17.62,14.4,7
+Clinical,1448,50.25,15.0,14
+Claims Payment,273,80.3,15.8,30
+Administrative,1010,80.6,14.9,30

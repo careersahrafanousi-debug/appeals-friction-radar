@@ -1,0 +1,6 @@
+Rule_ID,Severity,Status,exceptions
+DQ-02,Critical,Open,22
+DQ-01,High,Open,18
+DQ-05,Critical,Open,12
+DQ-06,Critical,Open,12
+DQ-03,Critical,Open,2

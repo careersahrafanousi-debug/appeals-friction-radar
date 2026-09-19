@@ -1,0 +1,13 @@
+Reason_Description,Reason_Category,appeals,avg_tat,overturn_pct
+Missing clinical documentation,Documentation,602,15.4,26.58
+Awaiting provider records,Documentation,455,16.4,23.3
+Routed to wrong review team,Routing,454,17.6,26.65
+Incomplete intake form,Intake,339,13.4,29.79
+Prior authorization not on file,Authorization,318,13.7,32.08
+Missing member signature / AOR,Documentation,287,16.8,19.51
+Member eligibility unclear,Eligibility,268,14.1,35.07
+Medical necessity dispute,Clinical,225,14.5,29.78
+Coding discrepancy,Coding,208,13.8,31.25
+Duplicate appeal submitted,Intake,187,13.2,29.95
+Reviewer capacity constraint,Capacity,176,13.0,27.27
+Policy exception required,Policy,135,13.2,29.63

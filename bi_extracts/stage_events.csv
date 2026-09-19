@@ -1,0 +1,10 @@
+Process_Stage,events,appeals,events_per_appeal
+Intake,7990,4000,2.0
+Routing,5616,3971,1.41
+Review,4482,3954,1.13
+Classification,3990,3990,1.0
+Validation,3990,3990,1.0
+Closure,3809,3809,1.0
+Decision,3809,3809,1.0
+Information Request,1355,692,1.96
+Escalation,402,402,1.0

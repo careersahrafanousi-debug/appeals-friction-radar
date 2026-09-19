@@ -1,0 +1,26 @@
+Appeal_ID,Appeal_Type,Priority,Status,Turnaround_Days,Review_Wait_Days,Reassignment_Count,Friction_Category
+APL-2026-002044,Clinical,Low,Closed,44.0,4,3,Critical friction
+APL-2026-003359,Clinical,Standard,Closed,49.0,0,2,Critical friction
+APL-2026-000087,Claims Payment,Standard,Closed,45.0,0,2,Critical friction
+APL-2026-000209,Clinical,Standard,Closed,41.0,4,2,Critical friction
+APL-2026-002532,Clinical,Low,Closed,37.0,0,3,Critical friction
+APL-2026-001180,Administrative,Standard,Closed,35.0,2,2,Critical friction
+APL-2026-002266,Clinical,Standard,Closed,33.0,0,2,Critical friction
+APL-2026-001053,Clinical,Urgent,Closed,31.0,0,3,Critical friction
+APL-2026-002293,Authorization,Urgent,Closed,43.0,1,3,Critical friction
+APL-2026-002484,Administrative,Standard,Closed,50.0,1,1,Critical friction
+APL-2026-002706,Claims Payment,Standard,Closed,46.0,1,2,Critical friction
+APL-2026-002682,Administrative,Urgent,Closed,44.0,3,1,Critical friction
+APL-2026-000705,Claims Payment,Urgent,Closed,42.0,1,2,Critical friction
+APL-2026-002146,Administrative,Low,Closed,41.0,3,2,Critical friction
+APL-2026-002729,Authorization,Standard,Closed,41.0,2,2,Critical friction
+APL-2026-001040,Clinical,Standard,Closed,38.0,1,2,Critical friction
+APL-2026-002148,Administrative,Low,Closed,34.0,3,1,Critical friction
+APL-2026-000300,Authorization,Urgent,Closed,34.0,2,3,Critical friction
+APL-2026-002100,Authorization,Urgent,Closed,33.0,2,1,Critical friction
+APL-2026-003910,Clinical,Standard,Closed,32.0,0,2,Critical friction
+APL-2026-001889,Administrative,Standard,Closed,27.0,0,2,Critical friction
+APL-2026-000793,Clinical,Urgent,Closed,53.0,3,3,Critical friction
+APL-2026-002850,Clinical,Urgent,Closed,52.0,5,3,Critical friction
+APL-2026-001291,Authorization,Standard,Closed,45.0,3,3,Critical friction
+APL-2026-003224,Clinical,Low,Closed,38.0,2,3,Critical friction
